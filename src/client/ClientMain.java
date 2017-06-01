@@ -7,6 +7,7 @@ import java.rmi.registry.Registry;
 import java.util.function.Function;
 
 import common.*;
+import functions.SquareFunction;
 
 public class ClientMain extends RmiInitialization {
 
@@ -16,7 +17,7 @@ public class ClientMain extends RmiInitialization {
 			Registry registry = LocateRegistry.getRegistry(Constants.rmiPort);
 	        System.setSecurityManager(new RMISecurityManager());
 			integration = (Integration)registry.lookup(Constants.rmiAddress);
-			double result = integration.integrate(0, 10, 0.1);
+			double result = integration.integrate(/*new SquareFunction(), */0, 10, 0.1);
 			System.out.println("Result is :" + result);
 		} catch (Exception e) {
 			System.out.println("Exception: " + e);

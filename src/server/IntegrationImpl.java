@@ -5,6 +5,8 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.function.Function;
 
 import common.Integration;
+import functions.AbstractFunction;
+import functions.SquareFunction;
 
 public class IntegrationImpl extends UnicastRemoteObject implements Integration {
 
@@ -12,10 +14,12 @@ public class IntegrationImpl extends UnicastRemoteObject implements Integration 
 		super();
 	}
 
+	AbstractFunction function = new SquareFunction();
+	
 	@Override
-	public double integrate(double begin, double end, double step) throws RemoteException {
+	public double integrate(/*SquareFunction function, */double begin, double end, double step) throws RemoteException {
 		double res = 0;
-		Function<Double, Double> function = x -> x * x;
+		
 		
 		double prevPt = begin;
 		double prevVal = function.apply(prevPt);
