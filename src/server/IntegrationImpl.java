@@ -13,8 +13,9 @@ public class IntegrationImpl extends UnicastRemoteObject implements Integration 
 	}
 
 	@Override
-	public double integrate(Function<Double, Double> function, double begin, double end, double step) throws RemoteException {
+	public double integrate(double begin, double end, double step) throws RemoteException {
 		double res = 0;
+		Function<Double, Double> function = x -> x * x;
 		
 		double prevPt = begin;
 		double prevVal = function.apply(prevPt);
